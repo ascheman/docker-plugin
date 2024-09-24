@@ -52,7 +52,9 @@ gradlePlugin {
             displayName = "Docker Gradle plugin"
             implementationClass = "com.fussionlabs.gradle.docker.DockerPlugin"
             tags = listOf("docker")
-            description = "TODO"
+            description = "The `docker-plugin` is a Gradle plugin created to simplify the process of building and " +
+                    "pushing Docker images. It calls the Docker CLI directly, supports multiplatform builds and " +
+                    "provides the ability to define custom Docker tasks."
         }
     }
 }
