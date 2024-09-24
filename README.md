@@ -8,7 +8,7 @@ To use the `docker-plugin`, include it in your Gradle project by adding the foll
 
 ```kotlin
 plugins {
-    id("com.example.docker-plugin") version "1.0.0"
+    id("com.fussionlabs.gradle.docker-plugin") version "0.1.0"
 }
 ```
 
