@@ -12,7 +12,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version("1.9.10")
 }
 
-version = "0.3.0"
+version = "0.4.0"
 group = "com.fussionlabs.gradle"
 
 repositories {
