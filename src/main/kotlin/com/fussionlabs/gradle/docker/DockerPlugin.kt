@@ -19,13 +19,13 @@ class DockerPlugin: Plugin<Project> {
         // Create the login task
         project.tasks.register(DOCKER_LOGIN_TASK, DockerLogin::class.java) { task ->
             task.group = DOCKER_PLUGIN_GROUP
-            task.description = "Login to the docker registry"
+            task.description = "Logs into the Docker registry using the provided username and password from the environment or configuration."
         }
 
         // Create the build task
         project.tasks.register(DOCKER_BUILD_TASK, DockerBuildx::class.java) { task ->
             task.group = DOCKER_PLUGIN_GROUP
-            task.description = "Build the Docker images"
+            task.description = "Builds the Docker image(s) defined in the configuration. Supports multiplatform builds and custom build arguments."
         }
 
         // Create the push task
@@ -33,7 +33,7 @@ class DockerPlugin: Plugin<Project> {
             task.dependsOn("dockerBuild")
             task.pushImage = true
             task.group = DOCKER_PLUGIN_GROUP
-            task.description = "Push the Docker images"
+            task.description = "Pushes the built Docker image(s) to the specified repository, applying any specified tags and the `latest` tag if enabled"
         }
 
         project.afterEvaluate {
