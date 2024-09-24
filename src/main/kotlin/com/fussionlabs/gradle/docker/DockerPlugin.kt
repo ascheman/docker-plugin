@@ -30,7 +30,7 @@ class DockerPlugin: Plugin<Project> {
 
         // Create the push task
         project.tasks.register(DOCKER_PUSH_TASK, DockerBuildx::class.java) { task ->
-            task.dependsOn("dockerBuild")
+            task.dependsOn(DOCKER_LOGIN_TASK)
             task.pushImage = true
             task.group = DOCKER_PLUGIN_GROUP
             task.description = "Pushes the built Docker image(s) to the specified repository, applying any specified tags and the `latest` tag if enabled"
