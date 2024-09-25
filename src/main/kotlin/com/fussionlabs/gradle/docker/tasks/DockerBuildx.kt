@@ -11,7 +11,7 @@ open class DockerBuildx: DockerTask() {
     var pushImage: Boolean = false
 
     @Input
-    var loadImage: Boolean = false
+    var loadImage: Boolean = System.getenv("DOCKER_PLUGIN_LOAD_IMAGE").toBoolean()
 
     override fun exec() {
         val platforms = project.dockerExt.platforms

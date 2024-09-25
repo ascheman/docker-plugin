@@ -26,6 +26,10 @@ class DockerPlugin: Plugin<Project> {
         project.tasks.register(DOCKER_BUILD_TASK, DockerBuildx::class.java) { task ->
             task.group = DOCKER_PLUGIN_GROUP
             task.description = "Builds the Docker image(s) defined in the configuration. Supports multiplatform builds and custom build arguments."
+
+            if (project.dockerExt.requireBuild) {
+                task.dependsOn("build")
+            }
         }
 
         // Create the push task
@@ -34,6 +38,10 @@ class DockerPlugin: Plugin<Project> {
             task.pushImage = true
             task.group = DOCKER_PLUGIN_GROUP
             task.description = "Pushes the built Docker image(s) to the specified repository, applying any specified tags and the `latest` tag if enabled"
+
+            if (project.dockerExt.requireBuild) {
+                task.dependsOn("build")
+            }
         }
 
         project.afterEvaluate {
